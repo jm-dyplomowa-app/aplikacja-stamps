@@ -1,0 +1,61 @@
+@import "./../../../shared/styles/variables.scss";
+@import "./../../../shared/styles/mixins.scss";
+
+.wrapper {
+  @include wrapper-yellow-flex;
+
+  padding: 1rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02rem;
+}
+
+.buttons {
+  @include form-promo-buttons;
+}
+
+.group {
+  @include form-promo-group;
+  overflow: hidden;
+}
+
+.message-wrapper {
+  @include form-promo-message-wrapper;
+  height: auto;
+  margin-top: 1rem;
+  padding: 0.4rem;
+}
+
+.message {
+  @include form-promo-message;
+  font-size: 1rem;
+}
+
+.message-prize {
+  @include form-promo-message;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: red;
+}
+
+.code {
+  font-size: 2rem;
+  font-weight: 900;
+  padding: 0.4rem;
+}
+
+.input-wrapper {
+  @include form-promo-input-wrapper;
+}
+
+input {
+  @include form-promo-input;
+}
+
+input.disabled {
+  background: #bbb;
+  color: #666;
+}

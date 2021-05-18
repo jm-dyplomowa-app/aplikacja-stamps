@@ -1,0 +1,138 @@
+@import "./../../../shared/styles/variables.scss";
+@import "./../../../shared/styles/mixins.scss";
+
+.wrapper {
+  @include wrapper-yellow;
+  overflow: hidden;
+}
+
+.message {
+  margin: 1rem 0 0 0;
+}
+
+.disabled-label {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  text-shadow: 0.11rem 0.11rem 0.1rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.2rem;
+  padding: 0.26em 0.42em;
+  font-weight: 400;
+  margin: 0 0.2rem;
+  width: auto;
+  color: #fff;
+
+  user-select: none;
+
+  background: rgb(150, 150, 150);
+}
+
+@include table-parts;
+
+.table {
+  width: 38%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.tables {
+  height: 100%;
+
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+}
+
+.label {
+  align-self: flex-start;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  border-radius: 0.2rem;
+  padding: 0.25rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  text-align: center;
+  color: rgb(100, 100, 200);
+  font-weight: 700;
+}
+
+.points-exchange {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-evenly;
+  width: 18%;
+  height: 80%;
+  padding: 1rem;
+  border: 0.1rem solid white;
+  border-radius: 0.1rem;
+  background: white;
+  box-shadow: 0 0.1rem 0.3rem 0.1rem rgba(0, 0, 0, 0.2);
+}
+
+.detail {
+  text-align: center;
+  background: #fff;
+  border-radius: 0.25rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &__label {
+    align-self: flex-start;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border-radius: 0.2rem;
+    padding: 0.25rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    color: rgb(50, 50, 100);
+    font-weight: 700;
+  }
+
+  &__value {
+    border: 0.06rem solid rgba(0, 0, 0, 0.2);
+    padding: 0.5rem 0.7rem;
+    border-radius: $form-border-radius;
+  }
+}
+
+.message-wrapper {
+  @include form-promo-message-wrapper;
+  height: auto;
+  padding: 0.4rem;
+}
+
+.message {
+  @include form-promo-message;
+  font-size: 0.8rem;
+}
+.buttons {
+  @include form-promo-buttons;
+  align-self: center;
+}
+
+.prize-description {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.quantity {
+  word-wrap: none;
+  word-break: keep-all;
+  white-space: nowrap;
+  font-weight: 900;
+}
+
+.prizes {
+  font-size: 1rem;
+  font-weight: 900;
+  padding: 0.4rem;
+  margin: 1rem 0;
+  text-align: center;
+}

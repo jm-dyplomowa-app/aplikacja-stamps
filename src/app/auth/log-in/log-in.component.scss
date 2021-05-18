@@ -1,0 +1,94 @@
+@import "./../../shared/styles/variables.scss";
+@import "./../../shared/styles/mixins.scss";
+.wrapper {
+  @include wrapper-blue-flex;
+}
+
+.form {
+  @include form-auth;
+}
+
+.input-group {
+  @include form-auth-input-group;
+}
+
+.buttons {
+  @include form-auth-buttons;
+}
+
+.input-wrapper {
+  @include form-auth-input-wrapper;
+}
+
+input {
+  @include form-auth-input;
+}
+
+.message {
+  @include form-auth-message;
+}
+
+.logins {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-bottom: 0.2rem;
+  transform: translate(-50%);
+}
+
+.logins-section {
+  position: relative;
+  width: 22vw;
+  height: 12vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+}
+
+.logins-message {
+  text-align: center;
+  color: #fff;
+
+  &::before {
+    font-weight: 700;
+    color: rgb(255, 85, 85);
+    display: block;
+    content: "DEV & TEST";
+    margin-bottom: 1rem;
+  }
+}
+
+.login {
+  position: relative;
+
+  border: 0.1rem #fff solid;
+  border-radius: 6px;
+
+  height: 40%;
+  width: 40%;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 1);
+  font-size: 1rem;
+
+  text-transform: uppercase;
+  background: rgb(169, 169, 218);
+  background: linear-gradient(
+    126deg,
+    rgba(169, 169, 218, 1) 0%,
+    rgba(255, 232, 127, 1) 100%
+  );
+
+  &:hover {
+    filter: brightness(125%);
+  }
+}
+
+.dev-test {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAALklEQVQYV2Pca2v73/nwYUYGLAAsiEsBXAdMAbJCFOPQTSBeJ8xNMBOwuhLmSAAMrSI+h/ZUggAAAABJRU5ErkJggg==)
+    repeat;
+
+  &:hover {
+    filter: brightness(120%);
+  }
+}

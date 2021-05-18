@@ -1,0 +1,67 @@
+<div class="wrapper">
+  <form [formGroup]="form" *ngIf="form">
+    <div class="group">
+      <label class="group__label">Nagroda - Weryfikacja </label>
+
+      <section class="section">
+        <p class="info">
+          1. Poproś Uczestnika (Klienta) o podanie kodu kuponu z nagrodą.
+          Znajdzie go na swoim koncie w aplikacji.
+        </p>
+        <div class="input-wrapper">
+          <label class="label" for="code"> Kod kuponu </label>
+          <input type="text" name="code" formControlName="code" />
+        </div>
+
+        <button class="buttons" [disabled]="!form.valid" (click)="verify()">
+          Zweryfikuj poprawność
+        </button>
+      </section>
+      <section class="section section--flex-start">
+        <ng-container *ngIf="wrongCoupon">
+          <p class="info info--coupon margin">
+            2. Niepoprawny kod lub typ kuponu.
+          </p>
+        </ng-container>
+
+        <ng-container *ngIf="verified && !alreadyRealised">
+          <p class="info margin" *ngIf="coupon">
+            <span class="info--coupon">Nagroda:</span>
+            {{ coupon?.prize?.description }}
+            <span class="info--coupon" *ngIf="coupon.prize.quantity">
+              Ilość:
+            </span>
+            {{ coupon?.prize?.quantity }}
+          </p>
+          <p class="info margin">
+            2. Dopytaj Klienta, czy chce zrealizować nagrodę już teraz oraz
+            poinformuj o nagrodzie. Jeśli nagroda posiada rodzaje, dopytaj
+            Klienta który wariant woli dostać. Jeśli Klient wyraził zgodę i
+            wybrał nagrodę - wydaj mu ją i wciśnij poniższy przycisk "ZREALIZUJ
+            - WYDANO NAGRODĘ".
+          </p>
+
+          <button
+            class="buttons margin"
+            type="submit"
+            [disabled]="!form.valid"
+            *ngIf="verified"
+            (click)="realise()"
+          >
+            Zrealizuj - nagrodę wydano
+          </button>
+        </ng-container>
+
+        <ng-container *ngIf="verified && alreadyRealised">
+          <p class="info margin">
+            2. Kupon został już zrealizowany. Poinformuj o tym klienta.
+          </p>
+        </ng-container>
+
+        <ng-container *ngIf="realisationComplete">
+          <p class="info info--coupon margin">Operacja zakończona sukcesem.</p>
+        </ng-container>
+      </section>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,11 @@
+@import "./../../styles/mixins.scss";
+
+.bg {
+  @include wrapper-yellow-flex;
+}
+
+.message {
+  font-size: 2rem;
+  font-weight: 900;
+  align-self: center;
+}

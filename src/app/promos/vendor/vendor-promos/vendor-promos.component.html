@@ -1,0 +1,114 @@
+<ng-container *ngIf="user$ | async as user">
+  <div class="wrapper">
+    <p class="table__name">
+      {{ tableName }}
+    </p>
+    <ng-container *ngIf="promos && promos.length">
+      <table class="table">
+        <!-- THEAD START -->
+        <thead class="table__head">
+          <tr class="table__row table__row--head">
+            <th class="cell cell--header cell--promo-details cell--promo-name">
+              <label class="cell__label"> Nazwa promocji </label>
+            </th>
+
+            <th
+              class="cell cell--header cell--promo-details cell--promo-description"
+            >
+              <label class="cell__label"> Opis promocji </label>
+            </th>
+
+            <th class="cell cell--header cell--prize cell--prize-description">
+              <label class="cell__label">Opis nagrody</label>
+            </th>
+
+            <th class="cell cell--header cell--prize cell--quantity">
+              <label class="cell__label"> Ilość (nagrody) </label>
+            </th>
+
+            <th class="cell cell--header cell--points">
+              <label class="cell__label"> Punkty startowe </label>
+            </th>
+            <th class="cell cell--header cell--points">
+              <label class="cell__label"> Punkty wymagane </label>
+            </th>
+
+            <th
+              class="cell cell--header cell--participants cell--participants-total"
+            >
+              <label class="cell__label"> Aktywni uczestnicy </label>
+            </th>
+
+            <th class="cell cell--actions">
+              <label class="cell__label"> Operacje - Promocje</label>
+            </th>
+          </tr>
+        </thead>
+
+        <!-- TBODY START -->
+        <tbody class="table__body">
+          <tr *ngFor="let promo of promos" class="table__row table__row--body">
+            <td class="cell cell--data cell--promo-details cell--promo-name">
+              <label class="cell__label"> {{ promo.promoName }} </label>
+            </td>
+
+            <td
+              class="cell cell--data cell--promo-details cell--promo-description"
+            >
+              <label class="cell__label">
+                {{ promo.promoDescription }}
+              </label>
+            </td>
+
+            <td class="cell cell--data cell--prize cell--prize-description">
+              <label class="cell__label"> {{ promo.prizeDescription }} </label>
+            </td>
+
+            <td class="cell cell--data cell--prize cell--quantity">
+              <label class="cell__label"> {{ promo.prizeQuantity }} </label>
+            </td>
+            <td class="cell cell--data cell--points">
+              <label class="cell__label">
+                {{ promo.pointsEntry }}
+              </label>
+            </td>
+            <td class="cell cell--data cell--points">
+              <label class="cell__label">
+                {{ promo.pointsRedeem }}
+              </label>
+            </td>
+
+            <td
+              class="cell cell--data cell--participants cell--participants-total"
+            >
+              <label class="cell__label">
+                {{ promo.participantsTotal }}
+              </label>
+              <label
+                class="action-label action-label--list"
+                [routerLink]="['/vendor/promo/participants', promo.pid]"
+              >
+                Lista
+              </label>
+            </td>
+
+            <td class="cell cell--actions">
+              <label
+                class="action-label action-label--edit"
+                [routerLink]="['/vendor/promo/edit', promo.pid]"
+              >
+                EDYTUJ
+              </label>
+              <label
+                class="action-label action-label--delete"
+                (click)="delete(promo)"
+              >
+                USUŃ
+              </label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  </div>
+</ng-container>

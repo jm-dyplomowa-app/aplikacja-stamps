@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "dyplomowa-app-0": {
+      "hosting": {
+        "stamps": [
+          "dyplomowa-app-0"
+        ]
+      }
+    }
+  }
+}

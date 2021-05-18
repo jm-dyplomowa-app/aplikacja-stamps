@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import "./app/shared/styles/reset";
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+*::-webkit-scrollbar {
+  width: 0.6vw;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 0.15rem;
+  background: rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &:active {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+* {
+  font-family: Roboto;
+  outline: none;
+}

@@ -1,0 +1,60 @@
+<div class="wrapper">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    (reset)="onReset()"
+    class="form"
+  >
+    <div class="input-group input-group--points">
+      <div class="input-wrapper">
+        <label class="form__label" for="email"> Email </label>
+        <input
+          class="form__input"
+          type="email"
+          name="email"
+          formControlName="email"
+        />
+      </div>
+      <div class="input-wrapper">
+        <label class="form__label" for="password"> hasło </label>
+        <input
+          class="form__input"
+          type="password"
+          name="password"
+          formControlName="password"
+        />
+      </div>
+    </div>
+
+    <div class="input-group input-group--buttons">
+      <button class="button buttons" type="reset">Wyczyść</button>
+
+      <button
+        class="button buttons"
+        type="submit"
+        [disabled]="!this.form.valid"
+      >
+        Wyślij
+      </button>
+    </div>
+    <p class="message">{{ message }}</p>
+  </form>
+</div>
+
+<div class="logins dev-test">
+  <p class="logins-message">Zaloguj się jako:</p>
+  <section class="logins-section">
+    <button
+      class="login"
+      (click)="onSubmit('vendor@gmail.com', 'vendor@gmail.com')"
+    >
+      VENDOR
+    </button>
+    <button
+      class="login"
+      (click)="onSubmit('customer@gmail.com', 'customer@gmail.com')"
+    >
+      CUSTOMER
+    </button>
+  </section>
+</div>

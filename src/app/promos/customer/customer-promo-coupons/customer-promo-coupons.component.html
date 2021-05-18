@@ -1,0 +1,172 @@
+<div class="wrapper">
+  <p class="table__name">
+    TWOJE KUPONY PUNKTOWE ORAZ KUPONY NA NAGRODY W PROMOCJI
+  </p>
+
+  <div class="tables">
+    <!-- ## KUPONY PUNKTOWE ## -->
+    <table class="table">
+      <label class="label">Kupony punktowe</label>
+
+      <thead class="table__head">
+        <tr class="table__row table__row--head">
+          <th class="cell cell--header">
+            <label class="cell__label"> Punkty na kuponie</label>
+          </th>
+
+          <th class="cell cell--header">
+            <label class="cell__label"> Kod kuponu</label>
+          </th>
+
+          <th class="cell cell--header">
+            <label class="cell__label"> Czy kupon został zrealizowany?</label>
+          </th>
+
+          <th class="cell cell--actions">
+            <label class="cell__label"> Operacje - Kupony </label>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody class="table__body">
+        <ng-container *ngIf="coupons.points && coupons.points.length">
+          <tr
+            *ngFor="let item of coupons.points"
+            class="table__row table__row--body"
+          >
+            <td class="cell cell--data cell--participant-details">
+              <label class="cell__label"> {{ item.points }}</label>
+            </td>
+
+            <td class="cell cell--data cell--participant-details">
+              <label class="cell__label"> {{ item.code }}</label>
+            </td>
+
+            <td class="cell cell--data cell--participant-details">
+              <label class="cell__label">
+                {{ item.realised ? "TAK" : "NIE" }}</label
+              >
+            </td>
+
+            <td class="cell cell--actions">
+              <label
+                *ngIf="item.realised === false"
+                class="action-label action-label--edit"
+                (click)="realizeCoupon(item)"
+              >
+                ZREALIZUJ KUPON
+              </label>
+              <label *ngIf="item.realised === true" class="disabled-label">
+                ZREALIZOWANO
+              </label>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+
+    <section class="points-exchange">
+      <label class="label">Wymiana punktów na kupon z nagrodą</label>
+
+      <p class="prizes">
+        Ilość nagród odebranych dotychczas w tej promocji:
+        {{ currentParticipant?.prizeCounter }}
+      </p>
+
+      <div class="detail">
+        <label class="detail__label">Twoje punkty</label>
+        <ng-container *ngIf="currentParticipant">
+          <p class="detail__value">{{ currentParticipant?.currentPoints }}</p>
+        </ng-container>
+      </div>
+
+      <div class="detail">
+        <label class="detail__label"
+          >Punkty potrzebne do uzyskania nagrody</label
+        >
+        <p class="detail__value">{{ currentPromo?.pointsRedeem }}</p>
+      </div>
+
+      <div class="message-wrapper" *ngIf="!canRedeem">
+        <div class="message">Masz za mało punktów.</div>
+      </div>
+
+      <button
+        *ngIf="canRedeem"
+        class="buttons"
+        (click)="generateCodeAndSubmit()"
+      >
+        Zamień punkty
+      </button>
+
+      <div class="message-wrapper" *ngIf="redeemSuccess">
+        <div class="message">Operacja powiodła się.</div>
+      </div>
+    </section>
+
+    <!-- ## PUNKTY NA NAGRODY ## -->
+    <table class="table">
+      <label class="label">Kupony z nagrodami</label>
+
+      <thead class="table__head">
+        <tr class="table__row table__row--head">
+          <th class="cell cell--header">
+            <label class="cell__label"> Nagroda</label>
+          </th>
+
+          <th class="cell cell--header">
+            <label class="cell__label"> Kod kuponu</label>
+          </th>
+
+          <th class="cell cell--header">
+            <label class="cell__label"> Czy kupon został zrealizowany?</label>
+          </th>
+
+          <th class="cell cell--actions">
+            <label class="cell__label"> Operacje - Kupony </label>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody class="table__body">
+        <ng-container *ngIf="coupons.prize && coupons.prize.length">
+          <tr
+            *ngFor="let item of coupons.prize"
+            class="table__row table__row--body"
+          >
+            <td
+              class="cell cell--data cell--participant-details prize-description"
+            >
+              <label class="cell__label">
+                {{ item?.prize?.description }}
+                <span class="quantity">
+                  {{ item.prize.quantity ? "x " : "" }}
+                  {{ item?.prize?.quantity }}
+                </span>
+              </label>
+            </td>
+
+            <td class="cell cell--data cell--participant-details">
+              <label class="cell__label"> {{ item.code }}</label>
+            </td>
+
+            <td class="cell cell--data cell--participant-details">
+              <label class="cell__label">
+                {{ item.realised ? "TAK" : "NIE" }}</label
+              >
+            </td>
+
+            <td class="cell cell--actions">
+              <label *ngIf="item.realised === false">
+                ODBIERZ U SPRZEDAWCY
+              </label>
+              <label *ngIf="item.realised === true" class="disabled-label">
+                ZREALIZOWANO
+              </label>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>

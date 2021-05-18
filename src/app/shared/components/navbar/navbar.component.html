@@ -1,0 +1,103 @@
+<header class="header">
+  <!-- <a [routerLink]="['faq']" class="header__item" routerLinkActive="active"
+    >FAQ</a
+  > -->
+
+  <ng-container *ngIf="user$ | async as user; else elseBlock">
+    <ng-container *ngIf="user.role === 'customer'">
+      <a
+        class="header__item"
+        [routerLink]="['promos']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >dostępne PROMOCJE</a
+      >
+
+      <a
+        [routerLink]="['customer/promos']"
+        class="header__item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >MOJE PROMOCJE</a
+      >
+    </ng-container>
+
+    <ng-container *ngIf="user.role === 'vendor'">
+      <a
+        [routerLink]="['promos']"
+        class="header__item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >dostępne PROMOCJE</a
+      >
+
+      <a
+        [routerLink]="['vendor/promos']"
+        class="header__item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >PROMOCJE SKLEPU</a
+      >
+
+      <a
+        [routerLink]="['vendor/promos/add']"
+        class="header__item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >DODAJ PROMOCJĘ</a
+      >
+
+      <a
+        [routerLink]="['/vendor/promo/give-prize']"
+        class="header__item"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >PRZYZNAJ NAGRODĘ</a
+      >
+    </ng-container>
+
+    <div class="dropdown">
+      <div class="dropdown__button">
+        {{ user.email | lowercase }}
+        <p class="dropdown__chevron"></p>
+      </div>
+      <p class="dropdown__content">
+        <a
+          [routerLink]="['auth/profile']"
+          class="header__item"
+          routerLinkActive="active"
+        >
+          Profil
+        </a>
+        <a
+          (click)="this.auth.logout()"
+          [routerLink]="['auth/profile']"
+          class="header__item"
+          routerLinkActive="active"
+        >
+          Wyloguj
+        </a>
+      </p>
+    </div>
+  </ng-container>
+</header>
+
+<ng-template #elseBlock>
+  <a [routerLink]="['promos']" class="header__item" routerLinkActive="active"
+    >dostępne PROMOCJE</a
+  >
+
+  <a
+    [routerLink]="['auth/register']"
+    class="header__item"
+    routerLinkActive="active"
+    >Rejestracja</a
+  >
+
+  <a
+    [routerLink]="['auth/log-in']"
+    class="header__item"
+    routerLinkActive="active"
+    >Logowanie</a
+  >
+</ng-template>

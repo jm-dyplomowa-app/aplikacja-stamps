@@ -1,0 +1,14 @@
+@import "./../../../shared/styles/variables.scss";
+@import "./../../../shared/styles/mixins.scss";
+
+.wrapper {
+  @include wrapper-yellow;
+
+  overflow: hidden;
+}
+
+@include table-parts;
+.table {
+  height: 100%;
+  overflow-y: scroll;
+}

@@ -1,0 +1,46 @@
+<div class="wrapper">
+  <ul *ngIf="promos$ | async as promos" class="promos">
+    <li *ngFor="let promo of promos" class="promo">
+      <section class="promo__image-wrapper">
+        <img class="promo__image" [src]="promo.imageRef" />
+      </section>
+
+      <section class="promo__pocket">
+        <div class="promo__name">Promo: {{ promo.promoName }}</div>
+        <div class="promo__prize">
+          Nagroda: {{ promo.prizeDescription }}
+          <ng-container *ngIf="promo.prizeQuantity && promo.prizeQuantity > 0">
+            ({{ promo.prizeQuantity ? "x " : "" }} {{ promo.prizeQuantity }})
+          </ng-container>
+        </div>
+        <div class="promo__description">
+          {{ promo.promoDescription }}
+        </div>
+        <div class="promo__vendor-email">
+          Lokalizacja: {{ promo.vendorStoreAddress }}
+        </div>
+        <div class="promo__vendor-email">
+          Kontakt ze sklepem: {{ promo.vendorEmail }}
+        </div>
+
+        <ng-container *ngIf="user$ | async as user">
+          <ng-container *ngIf="user.role === 'customer'">
+            <div class="promo__actions">
+              <label
+                class="action-label"
+                *ngIf="hasAlreadyJoined(promo, user) === false"
+                (click)="join(promo, user)"
+                >Dołącz</label
+              >
+              <label
+                class="action-label action-label--disabled"
+                *ngIf="hasAlreadyJoined(promo, user) === true"
+                >Już dołączono</label
+              >
+            </div>
+          </ng-container>
+        </ng-container>
+      </section>
+    </li>
+  </ul>
+</div>

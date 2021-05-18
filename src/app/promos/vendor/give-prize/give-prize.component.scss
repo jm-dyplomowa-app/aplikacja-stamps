@@ -1,0 +1,97 @@
+@import "./../../../shared/styles/variables.scss";
+@import "./../../../shared/styles/mixins.scss";
+
+.wrapper {
+  @include wrapper-yellow-flex;
+
+  padding: 1rem;
+
+  height: 100%;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02rem;
+}
+
+.buttons {
+  @include form-promo-buttons;
+}
+
+.group {
+  @include form-promo-group;
+  overflow: hidden;
+}
+
+.section {
+  height: 50%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+
+  &--flex-start {
+    justify-content: flex-start;
+  }
+}
+
+.message-wrapper {
+  @include form-promo-message-wrapper;
+  height: auto;
+  margin-top: 1rem;
+  padding: 0.4rem;
+}
+
+.message {
+  @include form-promo-message;
+  font-size: 1rem;
+}
+
+.message-prize {
+  @include form-promo-message;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: red;
+}
+
+.code {
+  font-size: 2rem;
+  font-weight: 900;
+  padding: 0.4rem;
+}
+
+.input-wrapper {
+  @include form-promo-input-wrapper;
+}
+
+input {
+  @include form-promo-input;
+}
+
+input.disabled {
+  background: #bbb;
+  color: #666;
+}
+
+.info {
+  font-size: 0.9rem;
+
+  &--coupon {
+    font-weight: 900;
+    font-size: 1rem;
+  }
+}
+
+.margin {
+  margin-top: 1rem;
+}
+.quantity {
+  word-wrap: none;
+  word-break: keep-all;
+  white-space: nowrap;
+  font-weight: 900;
+}

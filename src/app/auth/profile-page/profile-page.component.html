@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <ng-container *ngIf="user$ | async as user">
+    <div class="details">
+      <div class="detail">
+        <label class="detail__label"
+          >nazwa {{ user.role === "vendor" ? "sklepu" : "użytkownika" }}</label
+        >
+        <p class="detail__value">{{ user.name }}</p>
+      </div>
+
+      <div class="detail">
+        <label class="detail__label">email</label>
+        <p class="detail__value">{{ user.email }}</p>
+      </div>
+
+      <div class="detail" *ngIf="user.nip">
+        <label class="detail__label">NIP</label>
+        <p class="detail__value">{{ user.nip }}</p>
+      </div>
+
+      <div class="detail">
+        <label class="detail__label">Funkcja w serwisie</label>
+        <p class="detail__value">
+          <ng-container *ngIf="user.role === 'vendor'">
+            Przedstawiciel Sklepu
+          </ng-container>
+
+          <ng-container *ngIf="user.role === 'customer'">
+            Kupujący
+          </ng-container>
+        </p>
+      </div>
+    </div>
+  </ng-container>
+</div>

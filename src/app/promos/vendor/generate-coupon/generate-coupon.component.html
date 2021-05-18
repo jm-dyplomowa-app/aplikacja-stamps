@@ -1,0 +1,55 @@
+<div class="wrapper">
+  <ng-container *ngIf="pid && uid">
+    <form [formGroup]="form" (ngSubmit)="generateCodeAndSubmit()">
+      <div class="group">
+        <label class="group__label">Generowanie kuponu promocyjnego</label>
+        <div class="input-wrapper">
+          <label class="label" for="promoId"> Id promocji </label>
+          <input
+            class="disabled"
+            type="text"
+            name="promoId"
+            formControlName="promoId"
+          />
+        </div>
+
+        <div class="input-wrapper">
+          <label class="label" for="customerId"> Id uczestnika promocji </label>
+          <input
+            class="disabled"
+            type="text"
+            name="customerId"
+            formControlName="customerId"
+          />
+        </div>
+
+        <div class="input-wrapper">
+          <label class="label" for="points">
+            Ilość punktów do przyznania uczestnikowi
+          </label>
+          <input
+            class="input"
+            type="number"
+            name="points"
+            formControlName="points"
+            required
+          />
+        </div>
+
+        <button class="buttons" type="submit" [disabled]="!form.valid">
+          Generuj kupon
+        </button>
+
+        <div class="message-wrapper" *ngIf="message">
+          Wygenerowany kod realizacji: <span class="code">{{ code }}</span>
+          <div class="message" *ngIf="message">
+            {{ message }}
+          </div>
+          <div class="message-prize" *ngIf="messagePrize">
+            {{ messagePrize }}
+          </div>
+        </div>
+      </div>
+    </form>
+  </ng-container>
+</div>

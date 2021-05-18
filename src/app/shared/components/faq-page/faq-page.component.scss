@@ -1,0 +1,65 @@
+@import "./../../styles/mixins.scss";
+
+.wrapper {
+  @include wrapper-yellow;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.wrap {
+  background: rgba(105, 115, 230, 0.45);
+  position: absolute;
+  transform: translateY(0vh);
+  height: 5.5vh;
+  width: 28vw;
+}
+
+.faq {
+  position: relative;
+  border: 0.1rem solid white;
+  border-radius: 0.1rem;
+  background: white;
+  box-shadow: 0 0.1rem 0.3rem 0.1rem rgba(0, 0, 0, 0.2);
+  padding: 1em 3em;
+  margin: 1rem 3rem;
+
+  &__index {
+    color: white;
+  }
+
+  &__question {
+    font-weight: 600;
+    padding: 1em;
+    background: rgba(115, 115, 230, 0.45);
+    height: 7vh;
+    width: 27vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    position: relative;
+  }
+
+  &__answer {
+    padding: 1em 3em;
+    line-height: 1.4rem;
+  }
+
+  &__symbol {
+    position: absolute;
+    font-size: 5rem;
+    font-weight: 400;
+    transform: translateY(70%) translateX(-100%) rotate(0deg);
+    color: rgb(155, 155, 255);
+  }
+}

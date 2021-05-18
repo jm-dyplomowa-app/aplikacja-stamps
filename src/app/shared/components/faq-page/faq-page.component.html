@@ -1,0 +1,11 @@
+<div class="wrapper">
+  <ul class="faq-list" *ngFor="let question of questions; index as i">
+    <li class="faq">
+      <div class="faq__question">
+        {{ question.question }}
+        <div class="wrap"></div>
+      </div>
+      <div class="faq__answer">{{ question.answer }}</div>
+    </li>
+  </ul>
+</div>

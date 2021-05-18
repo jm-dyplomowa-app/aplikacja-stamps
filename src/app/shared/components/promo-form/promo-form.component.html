@@ -1,0 +1,120 @@
+<div class="wrapper">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    (reset)="resetForm()"
+    class="form"
+  >
+    <section class="form__section">
+      <div class="group">
+        <label class="group__label">PROMOCJA - Formularz</label>
+        <div class="input-wrapper">
+          <label class="form__label" for="promoName"> nazwa promocji </label>
+          <input
+            class="form__input"
+            type="text"
+            name="promoName"
+            formControlName="promoName"
+          />
+        </div>
+
+        <div class="input-wrapper">
+          <label class="form__label" for="promoDescription">
+            opis promocji
+          </label>
+          <textarea
+            rows="2"
+            class="form__input"
+            type="text"
+            name="promoDescription"
+            formControlName="promoDescription"
+          >
+          </textarea>
+        </div>
+
+        <div class="input-wrapper">
+          <label class="form__label" for="prizeDescription">
+            Nazwa i opis nagrody
+          </label>
+          <input
+            class="form__input"
+            type="text"
+            name="prizeDescription"
+            formControlName="prizeDescription"
+          />
+        </div>
+
+        <div class="input-wrapper">
+          <label class="form__label" for="prizeQuantity">
+            ilość (nagrody)
+          </label>
+          <input
+            class="form__input"
+            type="number"
+            name="prizeQuantity"
+            formControlName="prizeQuantity"
+          />
+        </div>
+
+        <div class="input-wrapper">
+          <label class="form__label" for="pointsEntry">
+            Punkty na wejście
+          </label>
+          <input
+            class="form__input"
+            type="number"
+            name="pointsEntry"
+            formControlName="pointsEntry"
+          />
+        </div>
+
+        <div class="input-wrapper">
+          <label class="form__label" for="pointsRedeem">
+            Punkty wymagane do nagrody
+          </label>
+          <input
+            class="form__input"
+            type="number"
+            name="pointsRedeem"
+            formControlName="pointsRedeem"
+          />
+        </div>
+
+        <label class="buttons" for="imageRef" type="button">
+          prześlij grafikę
+          <input
+            class="form__input form__input--image"
+            type="file"
+            id="imageRef"
+            #userPhoto
+            (change)="onFileSelected($event)"
+            name="imageRef"
+            autocomplete="off"
+          />
+        </label>
+        <p class="upload-progress">
+          Przesłano :<span *ngIf="userPhoto.value" #uploadProgress>
+            {{ percentage }}%
+          </span>
+        </p>
+
+        <button class="buttons" type="reset">Wyczyść formularz</button>
+
+        <button class="buttons" type="submit" [disabled]="!this.uploadDone">
+          Prześlij
+        </button>
+
+        <div class="message-wrapper">
+          <div class="message">
+            {{ message }}
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="form__section">
+      <div class="image-wrapper">
+        <img *ngIf="url" class="image-result" [src]="url" alt="promo-image" />
+      </div>
+    </section>
+  </form>
+</div>

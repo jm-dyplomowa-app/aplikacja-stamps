@@ -1,0 +1,91 @@
+<div class="wrapper">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    (reset)="resetForm()"
+    class="form"
+  >
+    <div class="input-group input-group--points">
+      <div class="input-wrapper">
+        <label class="form__label" for="role"> rola </label>
+
+        <select
+          class="form__input form__input--role"
+          name="role"
+          formControlName="role"
+          #roleInput
+        >
+          <option value="vendor">sklep</option>
+          <option value="customer">klient</option>
+        </select>
+      </div>
+
+      <div class="input-wrapper">
+        <label class="form__label" for="email"> Email </label>
+        <input
+          class="form__input"
+          type="email"
+          name="email"
+          formControlName="email"
+        />
+      </div>
+
+      <div class="input-wrapper">
+        <label class="form__label" for="password"> hasło </label>
+        <input
+          class="form__input"
+          type="password"
+          name="password"
+          formControlName="password"
+        />
+      </div>
+
+      <div class="input-wrapper">
+        <label class="form__label" for="nickname">
+          nazwa {{ roleInput.value === "vendor" ? "sklepu" : "użytkownika" }}
+        </label>
+        <input
+          class="form__input"
+          type="text"
+          name="nickname"
+          formControlName="nickname"
+        />
+      </div>
+
+      <ng-container *ngIf="roleInput.value === 'vendor'">
+        <div class="input-wrapper">
+          <label class="form__label" for="storeAddress"> adres sklepu </label>
+          <input
+            class="form__input"
+            type="text"
+            name="storeAddress"
+            formControlName="storeAddress"
+          />
+        </div>
+        <div class="input-wrapper">
+          <label class="form__label" for="nip"> NIP (10 cyfr) </label>
+          <input
+            class="form__input"
+            type="text"
+            name="nip"
+            formControlName="nip"
+          />
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="input-group input-group--buttons">
+      <button class="button buttons" type="reset">Wyczyść</button>
+
+      <button
+        class="button buttons"
+        type="submit"
+        [disabled]="!this.form.valid"
+      >
+        Wyślij
+      </button>
+    </div>
+
+    <p class="message">{{ message }}</p>
+  </form>
+</div>

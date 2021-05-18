@@ -1,0 +1,594 @@
+@import "./variables.scss";
+
+@mixin wrapper-yellow {
+  width: 100vw;
+  height: 100%;
+  padding: 1rem;
+  background: rgb(255, 185, 141);
+  background: linear-gradient(
+    144deg,
+    rgba(255, 185, 141, 1) 0%,
+    rgba(255, 232, 127, 1) 100%
+  );
+}
+
+@mixin wrapper-yellow-flex {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100%;
+  padding: 2rem;
+  background: rgb(255, 185, 141);
+  background: linear-gradient(
+    144deg,
+    rgba(255, 232, 127, 1) 0%,
+    rgba(255, 185, 141, 1) 100%
+  );
+
+  overflow: hidden;
+}
+
+@mixin wrapper-blue-flex {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100%;
+  background: linear-gradient(rgba(159, 169, 218, 1) 0%, rgb(90, 90, 180) 100%);
+
+  overflow: hidden;
+}
+
+// ### FORMS ###
+
+// # FORM - AUTH #
+@mixin form-auth {
+  align-self: center;
+  justify-self: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: auto;
+  width: 30vw;
+  box-shadow: 0 0.1rem 0.3rem 0.1rem rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  background: $form-background;
+  border: $form-border-width solid $form-border-color;
+  border-radius: $form-border-radius;
+  background: rgb(255, 185, 141);
+  background: linear-gradient(
+    144deg,
+    rgba(255, 232, 127, 1) 0%,
+    rgba(255, 185, 141, 1) 100%
+  );
+  text-transform: uppercase;
+
+  &__label {
+    padding-bottom: 0.4rem;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.02rem;
+
+    &--image {
+      align-self: center;
+      display: flex;
+      text-align: center;
+      padding: 0;
+      justify-content: center;
+      align-items: center;
+      height: 5vh;
+      width: 100%;
+      background: white;
+    }
+
+    &--image-result {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+    }
+  }
+}
+
+@mixin form-auth-input-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  margin: 0.3rem;
+  font-size: 0.75rem;
+  border-radius: 0.35rem;
+  width: 100%;
+
+  &--essentials {
+    grid-row: 1 / span 2;
+    grid-column: 1 / span 2;
+  }
+
+  &--prize {
+    grid-row: 3 / span 2;
+    grid-column: 1 / span 2;
+  }
+  &--points {
+    grid-row: 5 / span 2;
+    grid-column: 1 / span 2;
+  }
+
+  &--image {
+    grid-row: 1 / span 1;
+    grid-column: 3 / span 2;
+    padding: 0.4rem;
+    justify-content: space-between;
+  }
+
+  &--image-result {
+    grid-row: 3 / span 5;
+    grid-column: 3 / span 4;
+    border: 0.02rem solid $input-border-color;
+    border: none;
+
+    padding: 0;
+    height: auto;
+    max-width: 100%;
+    overflow: scroll;
+  }
+  &--buttons {
+    align-items: stretch;
+    flex-direction: row;
+    grid-row: 1 / span 1;
+    grid-column: 5 / span 2;
+    padding: 0.4rem;
+    width: 100%;
+    padding: 1em 3em;
+  }
+
+  &--result {
+    grid-row: 5 / span 2;
+    grid-column: 3 / span 2;
+    border: $form-border-width solid $form-button-border-color;
+  }
+
+  &--message {
+    grid-row: 2 / span 1;
+
+    grid-column: 3 / span 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 600;
+    background: $form-message-background;
+    border: $form-border-width solid $form-message-background;
+  }
+}
+
+@mixin form-auth-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 0.4rem;
+  margin: 0.2rem 0;
+}
+
+@mixin form-auth-message {
+  font-size: 0.8rem;
+  height: 4vh;
+  width: 100%;
+  font-weight: 500;
+}
+
+@mixin form-auth-buttons {
+  height: 6vh;
+  width: 100%;
+
+  margin: 0.4rem;
+  text-transform: uppercase;
+  font-family: Roboto;
+  font-size: 0.9rem;
+  font-weight: 400;
+  border-radius: 0.3rem;
+  border: $form-border-width solid $form-button-border-color;
+  border: 0.06rem solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  background: $form-button-background;
+  background: #fff;
+  &:hover {
+    background: $form-button-background--hover;
+  }
+
+  &:focus {
+    background: $form-button-background--focus;
+  }
+
+  &:active {
+    background: $form-button-background--active;
+  }
+
+  &:disabled {
+    background: lightgrey;
+  }
+}
+
+@mixin form-auth-input {
+  border: 0.06rem solid rgba(0, 0, 0, 0.2);
+  background: #fff;
+  border-radius: 0.25rem;
+  width: 24vw;
+  padding: 0 1.3rem;
+  height: 7vh;
+  margin: 0.35rem;
+  font-size: 1.4rem;
+}
+
+// # FORM - PROMOS
+
+@mixin form-promo-base {
+  display: flex;
+
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+
+  height: 90vh;
+  width: 90vw;
+  text-transform: uppercase;
+  box-shadow: 0 0.1rem 0.3rem 0.1rem rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  border: $form-border-width solid $form-border-color;
+  border-radius: $form-border-radius;
+  background: rgb(255, 185, 141);
+  background: linear-gradient(
+    144deg,
+    rgba(255, 232, 127, 1) 0%,
+    rgba(255, 185, 141, 1) 100%
+  );
+
+  &__section {
+    width: 45vw;
+    height: 86vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+}
+
+@mixin form-promo-input {
+  text-align: center;
+  border: 0.06rem solid rgba(0, 0, 0, 0.2);
+  background: #fff;
+  border-radius: 0.25rem;
+  width: 100%;
+  height: 8%;
+  padding: 0.8em;
+  font-size: 1rem;
+}
+
+@mixin form-promo-input-wrapper {
+  text-align: center;
+  width: 90%;
+  margin: 0.75rem 0;
+}
+
+@mixin form-promo-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  box-shadow: none;
+}
+
+@mixin form-promo-message-wrapper {
+  height: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-break: strict;
+  box-shadow: none;
+}
+
+@mixin form-promo-group {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  justify-content: flex-start;
+  align-items: center;
+  width: 40vw;
+  height: 86vh;
+  margin: 0.3rem;
+  padding: 1.5rem;
+  font-size: 0.75rem;
+  border: 0.1rem solid white;
+  border-radius: 0.1rem;
+  background: white;
+  box-shadow: 0 0.1rem 0.3rem 0.1rem rgba(0, 0, 0, 0.2);
+  &__label {
+    align-self: flex-start;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    border-radius: 0.2rem;
+    padding: 0.25rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    text-align: center;
+    color: rgb(100, 100, 200);
+    font-weight: 700;
+  }
+  &--buttons {
+    box-shadow: none;
+  }
+
+  &--result {
+    border: $form-border-width solid $form-button-border-color;
+  }
+}
+
+@mixin form-promo-buttons {
+  text-align: center;
+  width: 90%;
+  padding: 0.4rem;
+  margin: 0.4rem;
+
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  margin: 0.75rem 0;
+  text-transform: uppercase;
+  font: 400 0.9rem Roboto;
+
+  min-height: 5vh;
+
+  border-radius: 0.3rem;
+  border: 0.06rem solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  background: #fff;
+  &:hover {
+    background: $form-button-background--hover;
+  }
+
+  &:focus {
+    background: $form-button-background--focus;
+  }
+
+  &:active {
+    background: $form-button-background--active;
+  }
+
+  &:disabled {
+    background: lightgrey;
+  }
+}
+
+// ### Table ###
+@mixin table {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 100%;
+  padding: 1rem;
+  border: 0.1rem solid white;
+  border-radius: 0.1rem;
+  background: white;
+  box-shadow: 0 0.1rem 0.3rem 0.1rem rgba(0, 0, 0, 0.2);
+  border-spacing: 0px;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  &__head {
+    display: flex;
+    width: 100%;
+  }
+
+  &__body {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  &__row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 7vh;
+    align-content: center;
+    align-items: center;
+    font-family: Roboto;
+    font-size: 0.9rem;
+    font-weight: 400;
+    border-radius: 0;
+    border: 0.05rem solid rgba(0, 0, 0, 0.2);
+
+    &--head {
+      border-radius: 0;
+      border-bottom: 0.1rem solid rgba(0, 0, 0, 0.2);
+      background: rgba(255, 185, 141, 0.5);
+    }
+  }
+
+  &__name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1em;
+  }
+}
+
+@mixin cell {
+  flex: 1 1 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+  height: 100%;
+  overflow: hidden;
+  border-right: none;
+  font-size: 0.8rem;
+  border-right: 0.01rem solid rgba(0, 0, 0, 0.2);
+
+  border-radius: 0;
+
+  &:last-of-type {
+    border-right: none;
+  }
+
+  &--data {
+    display: flex;
+  }
+
+  $background1: rgba(233, 152, 67, 0.2);
+  $background2: rgba(252, 175, 11, 0.2);
+
+  &--promo-name {
+    flex: 1 1 130px;
+  }
+
+  &--promo-description {
+    flex: 1 0 150px;
+  }
+
+  &--vendor-email {
+    flex: 1 0 150px;
+  }
+
+  &--address-store {
+    flex: 1 1 130px;
+  }
+
+  &--promo-details {
+    background: $background1;
+  }
+  &--prize {
+    background: $background1;
+  }
+
+  &--quantity {
+    flex: 1 1 55px;
+  }
+
+  &--points {
+    background: $background1;
+    flex: 1 1 55px;
+  }
+
+  &--participants {
+    background: $background1;
+  }
+
+  &--participants-total {
+    flex: 1 1 55px;
+  }
+
+  &--participants-list {
+    flex: 1 1 55px;
+  }
+
+  &--metadata {
+    background: $background1;
+  }
+
+  &--created-on {
+    flex: 1 1 55px;
+  }
+
+  &--active {
+    flex: 1 1 45px;
+  }
+
+  &--actions {
+    background: rgba(225, 225, 225, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    align-content: center;
+  }
+
+  &__label {
+    width: 100%;
+    height: 100%;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+  }
+}
+
+@mixin table-action-label {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  text-shadow: 0.11rem 0.11rem 0.1rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.2rem;
+  padding: 0.26em 0.42em;
+  font-weight: 400;
+  margin: 0 0.2rem;
+  width: auto;
+  color: #fff;
+
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    filter: brightness(125%);
+  }
+
+  &:active {
+    filter: brightness(150%);
+  }
+
+  &:focus {
+    filter: brightness((200%));
+  }
+
+  &--edit {
+    background: rgb(55, 200, 100);
+  }
+
+  &--delete {
+    background: rgb(255, 100, 0);
+  }
+
+  &--list {
+    background: rgb(100, 100, 220);
+  }
+
+  &--disabled {
+    background: rgb(150, 150, 150);
+  }
+}
+
+@mixin table-parts {
+  .table {
+    @include table;
+  }
+
+  .cell {
+    @include cell;
+  }
+
+  .action-label {
+    @include table-action-label;
+  }
+
+  .cell--data.cell--promo-description,
+  .cell--data.cell--prize-description {
+    overflow-y: scroll;
+  }
+}

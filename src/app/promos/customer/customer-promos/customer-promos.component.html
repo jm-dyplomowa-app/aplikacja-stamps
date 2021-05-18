@@ -1,0 +1,90 @@
+<div class="wrapper">
+  <p class="table__name">{{ tableName }}</p>
+
+  <ng-container *ngIf="customerPromos">
+    <table class="table">
+      <!-- THEAD START -->
+      <thead class="table__head">
+        <tr class="table__row table__row--head">
+          <th class="cell cell--header cell--promo-details cell--promo-name">
+            <label class="cell__label"> Nazwa promocji</label>
+          </th>
+
+          <th class="cell cell--header cell--prize">
+            <label class="cell__label">Opis nagrody</label>
+          </th>
+
+          <th class="cell cell--header cell--points">
+            <label class="cell__label"> Twoje punkty / Potrzebne </label>
+          </th>
+          <th class="cell cell--header cell--points">
+            <label class="cell__label"> Punkty na start </label>
+          </th>
+
+          <th class="cell cell--header cell--points">
+            <label class="cell__label"> Przyznane kupony </label>
+          </th>
+
+          <th class="cell cell--actions">
+            <label class="cell__label"> Operacje - Promocje</label>
+          </th>
+        </tr>
+      </thead>
+
+      <!-- TBODY START -->
+      <tbody class="table__body" *ngIf="customerPromos">
+        <tr
+          *ngFor="let promo of customerPromos"
+          class="table__row table__row--body"
+        >
+          <td class="cell cell--data cell--promo-details cell--promo-name">
+            <label class="cell__label">
+              {{ promo.promoName }}
+            </label>
+          </td>
+
+          <td class="cell cell--data cell--prize cell--prize-description">
+            <label class="cell__label"> {{ promo.prizeDescription }} </label>
+          </td>
+
+          <td class="cell cell--data cell--points">
+            <label class="cell__label">
+              {{ getParticipantPoints(promo) }} / {{ promo.pointsRedeem }}
+            </label>
+          </td>
+
+          <td class="cell cell--data cell--points">
+            <label class="cell__label">
+              {{ promo.pointsEntry ? promo.pointsEntry : "Nie było" }}
+            </label>
+          </td>
+
+          <td
+            class="cell cell--data cell--participants cell--participants-total"
+          >
+            <label
+              class="action-label action-label--list"
+              [routerLink]="['/customer/promo/coupons']"
+              [queryParams]="{
+                pid: promo.pid,
+                uid: user.uid,
+                promo: promo
+              }"
+            >
+              Lista
+            </label>
+          </td>
+
+          <td class="cell cell--actions">
+            <label
+              class="action-label action-label--delete"
+              (click)="resign(promo, user)"
+            >
+              zrezygnuj
+            </label>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+</div>
