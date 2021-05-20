@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./promos/promos.module').then((m) => m.PromosModule),
   },
-  { path: '**', component: WrongPageComponent },
+  { path: '**', redirectTo: 'promos' },
 ];
 
 @NgModule({
