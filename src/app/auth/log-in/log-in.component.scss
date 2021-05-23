@@ -39,7 +39,6 @@ input {
 .logins-section {
   position: relative;
   width: 22vw;
-  height: 12vh;
   display: flex;
   justify-content: space-evenly;
   align-content: center;
@@ -49,6 +48,7 @@ input {
 .logins-message {
   text-align: center;
   color: #fff;
+  padding-bottom: 1rem;
 
   &::before {
     font-weight: 700;
@@ -65,11 +65,12 @@ input {
   border: 0.1rem #fff solid;
   border-radius: 6px;
 
-  height: 40%;
   width: 40%;
+  padding: 0.3em 0.45em;
+
   cursor: pointer;
   background: rgba(255, 255, 255, 1);
-  font-size: 1rem;
+  font-size: 0.9rem;
 
   text-transform: uppercase;
   background: rgb(169, 169, 218);
@@ -87,6 +88,8 @@ input {
 .dev-test {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAALklEQVQYV2Pca2v73/nwYUYGLAAsiEsBXAdMAbJCFOPQTSBeJ8xNMBOwuhLmSAAMrSI+h/ZUggAAAABJRU5ErkJggg==)
     repeat;
+
+  height: 100px;
 
   &:hover {
     filter: brightness(120%);

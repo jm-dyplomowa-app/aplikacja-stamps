@@ -20,9 +20,9 @@ export class CustomerPromosComponent implements OnInit {
   tableName = 'PROMOCJE W KTÓRYCH UCZESTNICZYSZ';
   sub: Subscription = new Subscription();
 
-  promos$: Observable<
-    DocumentData[]
-  > = this.fire.getPromosCollectionRef().valueChanges();
+  promos$: Observable<DocumentData[]> = this.fire
+    .getPromosCollectionRef()
+    .valueChanges();
 
   customerPromos: PromoDTO[] = [];
 
@@ -59,8 +59,6 @@ export class CustomerPromosComponent implements OnInit {
       (p) => p.uid === this.user.uid
     );
 
-    console.log(participant);
-
     return participant.currentPoints;
   }
 
@@ -71,9 +69,8 @@ export class CustomerPromosComponent implements OnInit {
       );
 
       if (resignPromo) {
-        const newPromoParticipants: ParticipantDTO[] = resignPromo?.participantsTable?.filter(
-          (pt) => pt.uid !== user.uid
-        );
+        const newPromoParticipants: ParticipantDTO[] =
+          resignPromo?.participantsTable?.filter((pt) => pt.uid !== user.uid);
 
         const newCustomerPromosRefs: string[] = user?.promos?.filter(
           (pr: any) => pr !== promo.pid
